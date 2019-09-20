@@ -13,10 +13,26 @@ const ColorList = ({ colors, updateColors }) => {
     console.log(colors);
     const [editing, setEditing] = useState(false);
     const [colorToEdit, setColorToEdit] = useState(initialColor);
+    const [colorToAdd, setColorToAdd] = useState(initialColor);
 
     const editColor = color => {
         setEditing(true);
         setColorToEdit(color);
+    };
+
+    const addColor = e => {
+        e.preventDefault();
+
+        axiosWithAuth()
+            .post('/colors', { ...colorToAdd })
+            .then(res => {
+                updateColors(res.data);
+                setColorToAdd(initialColor);
+            })
+            .catch(err => {
+                console.log(err);
+                setColorToAdd(initialColor);
+            });
     };
 
     const saveEdit = e => {
@@ -47,6 +63,39 @@ const ColorList = ({ colors, updateColors }) => {
     return (
         <div className="colors-wrap">
             <p>colors</p>
+            <form onSubmit={addColor}>
+                <legend>Add Color</legend>
+                <label>
+                    color name:
+                    <input
+                        onChange={e =>
+                            setColorToAdd({
+                                ...colorToAdd,
+                                color: e.target.value,
+                            })
+                        }
+                        value={colorToAdd.color}
+                    />
+                </label>
+                <label>
+                    hex code:
+                    <input
+                        onChange={e =>
+                            setColorToAdd({
+                                ...colorToAdd,
+                                code: { hex: e.target.value },
+                            })
+                        }
+                        value={colorToAdd.code.hex}
+                    />
+                </label>
+                <div className="button-row">
+                    <button type="submit">save</button>
+                    <button onClick={() => setColorToAdd(initialColor)}>
+                        clear
+                    </button>
+                </div>
+            </form>
             <ul>
                 {colors &&
                     colors.map(color => (
@@ -102,8 +151,6 @@ const ColorList = ({ colors, updateColors }) => {
                     </div>
                 </form>
             )}
-            <div className="spacer" />
-            {/* stretch - build another form here to add a color */}
         </div>
     );
 };
