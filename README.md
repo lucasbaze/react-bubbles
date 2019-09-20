@@ -22,40 +22,57 @@ In this project you will create a login page and request a token from the server
 
 **Note** You can use the sites like the following to get color hex codes:
 
-- [Color-Hex](https://www.color-hex.com/)
+-   [Color-Hex](https://www.color-hex.com/)
 
 ## Self-Study/Essay Questions
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Explain what a token is used for.
-- [ ] What steps can you take in your web apps to keep your data secure?
-- [ ] Describe how web servers work.
-- [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+-   [ ] Explain what a token is used for.
+-   [ ] What steps can you take in your web apps to keep your data secure?
+-   [ ] Describe how web servers work.
+-   [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
 
+1.
+
+A token is used to verify that a user is who they say they are. A typical process is as follows: 1) The user enters their username and password. 2) The server verifies that the username and password are correct. 3) The server issues a token to the user 4) The user’s client stores that token 5) All subsequent requests to the server will contain the token to verify the user and allows requests to be sent.
+
+2.
+
+<ul><li>Never commit secret keys to git</li>
+<li>Use a token or cookie based authentication system that lives on the server side</li>
+<li>Hash or encrypt the token or headers being sent between client and server</li>
+<li>Privatize routes on the client to ensure users can’t stumble upon pages </li>
+</ul>
+
+3.
+
+In its simplest form, a web server is an “always-on” computer that is designed to accept requests from an incoming computer and the send responses based on the type of request. The server “serves” the client computer the information that it is requesting. In more sophisticated structures, server can live on the cloud (such as AWS) and be accessed by anyone on the internet. Additionally there are hundreds of different types of servers including, but not limited to name servers for converting IP addresses to Domain names, email servers for routing emails, web servers, for serving html pages, and many more.
+
+4. CRUD stands for Create, Read, Update, and Delete, and the corresponding HTTP methods are Post, Get, Put, and Delete respectively.
 
 ## Project Set Up
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add PM as collaborator on Github.
-- [ ] Clone your OWN version of Repo (Not Lambda's by mistake!).
-- [ ] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
-- [ ] **RUN** `yarn install or npm install` at the root to retrieve all the dependencies for the node server. You will not need to create any react apps here nor will you need to install any other dependencies. You should have all you need in this repo.
-- [ ] **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**.
-- [ ] **RUN** `yarn start or npm start` to get your API up and running on `http://localhost:5000`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
-- [ ] **LOOK** at your `client` directory and notice it's just a plain ol' React App that we've built using `create-react-app`.
-- [ ] **cd** into `client` and run `yarn install or npm install` to retrieve the client side dependencies.
-- [ ] **RUN** `yarn start or npm start` to fire up your React application.
+-   [ ] Create a forked copy of this project.
+-   [ ] Add PM as collaborator on Github.
+-   [ ] Clone your OWN version of Repo (Not Lambda's by mistake!).
+-   [ ] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
+-   [ ] Implement the project on this Branch, committing changes regularly.
+-   [ ] Push commits: git push origin `<firstName-lastName>`.
+-   [ ] **RUN** `yarn install or npm install` at the root to retrieve all the dependencies for the node server. You will not need to create any react apps here nor will you need to install any other dependencies. You should have all you need in this repo.
+-   [ ] **LOOK** at all the files you've been given for this project. One important file to note is `server.js`. This file contains an **API** that you are going to be interfacing with. Below is documentation on how to interact with the **API**.
+-   [ ] **RUN** `yarn start or npm start` to get your API up and running on `http://localhost:5000`. This is the **URL** you're going to need to use within your React app in order to make AJAX requests for data.
+-   [ ] **LOOK** at your `client` directory and notice it's just a plain ol' React App that we've built using `create-react-app`.
+-   [ ] **cd** into `client` and run `yarn install or npm install` to retrieve the client side dependencies.
+-   [ ] **RUN** `yarn start or npm start` to fire up your React application.
 
 Follow these steps for completing your project:
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
-- [ ] Add your Project Manager as a Reviewer on the Pull-request
-- [ ] PM then will count the HW as done by  merging the branch back into master.
+-   [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo).
+-   [ ] Add your Project Manager as a Reviewer on the Pull-request
+-   [ ] PM then will count the HW as done by merging the branch back into master.
 
 ## Minimum Viable Product
 
@@ -65,32 +82,32 @@ The MVP of this project will be broken up between 2 stages. Follow each step.
 
 Build a login form to authenticate your users.
 
-- [ ] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
-- [ ] Save the token to localStorage
-- [ ] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
-- [ ] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
+-   [ ] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
+-   [ ] Save the token to localStorage
+-   [ ] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
+-   [ ] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
 
 ### Stage 2 - Consuming the API
 
-- [ ] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles.
-- [ ] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
-- [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
+-   [ ] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles.
+-   [ ] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
+-   [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
 
 ### API Documentation
 
-  * **[POST]** * to `/api/login`: returns a token to be added to the header of all other requests. Pass in the following credentials as the `body` of the request: `{ username: 'Lambda School', password: 'i<3Lambd4' }`
-  * **[GET]** to `/api/colors`: returns the list of colors and their hex codes.
-  * **[POST]** to `/api/colors`: creates a new color object. Pass the color as the `body` of the request (the second argument passed to `axios.post`).
-  * **[PUT]** to `/api/colors/:id`: updates the color using the `id` passed as part of the URL. Send the color object with the updated information as the `body` of the request (the second argument passed to `axios.put`).
-  * **[DELETE]** to `/api/colors/123`: removes the color using the `id` passed as part of the URL (123 in example).
+-   **[POST]** \* to `/api/login`: returns a token to be added to the header of all other requests. Pass in the following credentials as the `body` of the request: `{ username: 'Lambda School', password: 'i<3Lambd4' }`
+-   **[GET]** to `/api/colors`: returns the list of colors and their hex codes.
+-   **[POST]** to `/api/colors`: creates a new color object. Pass the color as the `body` of the request (the second argument passed to `axios.post`).
+-   **[PUT]** to `/api/colors/:id`: updates the color using the `id` passed as part of the URL. Send the color object with the updated information as the `body` of the request (the second argument passed to `axios.put`).
+-   **[DELETE]** to `/api/colors/123`: removes the color using the `id` passed as part of the URL (123 in example).
 
 ## STRETCH PROBLEMS
 
 **HTTP/Axios Stretch Problems**
 
-- [ ] Build a form at the bottom of `ColorList.js` to add new colors to the colors data
+-   [ ] Build a form at the bottom of `ColorList.js` to add new colors to the colors data
 
 **Data Visualization**
 
-- [ ] Look at [Potion JS](https://potion.js.org/). This is the library used to display the color data
-- [ ] Play around with the data visualization happening in `Bubbles.js`. Have fun with this! Try different components from the library, or see if you can add props to change the UI a bit.
+-   [ ] Look at [Potion JS](https://potion.js.org/). This is the library used to display the color data
+-   [ ] Play around with the data visualization happening in `Bubbles.js`. Have fun with this! Try different components from the library, or see if you can add props to change the UI a bit.
