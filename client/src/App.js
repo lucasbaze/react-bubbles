@@ -6,6 +6,7 @@ import Login from './components/Login';
 import BubblePage from './components/BubblePage';
 
 //CSS
+import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';
 
 function App() {
