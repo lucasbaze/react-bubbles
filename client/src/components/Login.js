@@ -1,16 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
+//Actions
+import { axiosWithAuth } from '../actions';
+
+//Hooks
 import { useForm } from '../hooks/useForm';
 
+//Components
 import { Form, Container } from 'semantic-ui-react';
 
-const Login = () => {
+const Login = ({ history }) => {
     // make a post request to retrieve a token from the api
     // when you have handled the token, navigate to the BubblePage route
+    const submitHandler = formValues => {
+        let credentials = { ...formValues };
+        console.log(credentials);
+        axiosWithAuth()
+            .post('/login', credentials)
+            .then(res => {
+                if (res.status == 200) {
+                    localStorage.setItem('token', res.data.payload);
+                }
+                history.push('/bubbles');
+            })
+            .catch(err => console.log(err));
+    };
 
     const [formValues, handleChange, handleSubmit, setFormValues] = useForm(
-        null,
-        console.log
+        { username: '', password: '' },
+        submitHandler
     );
 
     useEffect(() => {}, []);
@@ -36,7 +54,7 @@ const Login = () => {
                         onChange={handleChange}
                     />
                 </Form.Field>
-                <Form.Button type="submit" content="Login!" />
+                <Form.Button type="submit" color="teal" content="Login!" />
             </Form>
         </Container>
     );
