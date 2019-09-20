@@ -39,14 +39,14 @@ const ColorList = ({ colors, updateColors }) => {
             <p>colors</p>
             <ul>
                 {colors.map(color => (
-                    <li key={color.color} onClick={() => editColor(color)}>
-                        <span>
-                            <span
-                                className="delete"
-                                onClick={() => deleteColor(color)}
-                            >
-                                x
-                            </span>{' '}
+                    <li key={color.color}>
+                        <span
+                            className="delete"
+                            onClick={() => deleteColor(color)}
+                        >
+                            x
+                        </span>{' '}
+                        <span onClick={() => editColor(color)}>
                             {color.color}
                         </span>
                         <div
