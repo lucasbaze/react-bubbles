@@ -10,28 +10,27 @@ import 'semantic-ui-css/semantic.min.css';
 import './styles.scss';
 
 function App() {
-    const [user, setUser] = useState(null);
     const [colorList, setColorList] = useState([]);
     return (
         <Router>
             <div className="App">
                 <Route exact path="/" component={Login} />
-                <PrivateRoute
-                    user={user}
-                    path="/bubbles"
-                    component={BubblePage}
-                />
+                <PrivateRoute path="/bubbles" component={BubblePage} />
             </div>
         </Router>
     );
 }
 
-function PrivateRoute({ user, component: Component, ...rest }) {
+function PrivateRoute({ component: Component, ...rest }) {
     return (
         <Route
             {...rest}
             render={props =>
-                user ? <Component {...props} /> : <Redirect to="/" />
+                localStorage.getItem('token') ? (
+                    <Component {...props} />
+                ) : (
+                    <Redirect to="/" />
+                )
             }
         />
     );
