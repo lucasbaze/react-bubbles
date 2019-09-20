@@ -21,6 +21,16 @@ const ColorList = ({ colors, updateColors }) => {
 
     const saveEdit = e => {
         e.preventDefault();
+
+        axiosWithAuth()
+            .put(`/colors/${colorToEdit.id}`, { ...colorToEdit })
+            .then(res => {
+                console.log(res);
+                updateColors(res.data);
+                setColorToEdit(initialColor);
+            })
+            .catch(err => console.log(err));
+
         // Make a put request to save your updated color
         // think about where will you get the id from...
         // where is is saved right now?
@@ -38,23 +48,24 @@ const ColorList = ({ colors, updateColors }) => {
         <div className="colors-wrap">
             <p>colors</p>
             <ul>
-                {colors.map(color => (
-                    <li key={color.color}>
-                        <span
-                            className="delete"
-                            onClick={() => deleteColor(color)}
-                        >
-                            x
-                        </span>{' '}
-                        <span onClick={() => editColor(color)}>
-                            {color.color}
-                        </span>
-                        <div
-                            className="color-box"
-                            style={{ backgroundColor: color.code.hex }}
-                        />
-                    </li>
-                ))}
+                {colors &&
+                    colors.map(color => (
+                        <li key={color.color}>
+                            <span
+                                className="delete"
+                                onClick={() => deleteColor(color)}
+                            >
+                                x
+                            </span>{' '}
+                            <span onClick={() => editColor(color)}>
+                                {color.color}
+                            </span>
+                            <div
+                                className="color-box"
+                                style={{ backgroundColor: color.code.hex }}
+                            />
+                        </li>
+                    ))}
             </ul>
             {editing && (
                 <form onSubmit={saveEdit}>
