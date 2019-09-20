@@ -17,8 +17,12 @@
   },
   "homepage": "hhttps://github.com/LambdaSchool/SPA-Routing-React#readme",
   "dependencies": {
+    "@potion/extra": "^1.0.0-next.0",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.1",
+    "styled-components": "^4.3.2"
   }
 }
